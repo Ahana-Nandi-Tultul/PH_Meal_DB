@@ -17,6 +17,7 @@ const displayMeals = (meals, dataLimit) =>{
     const noMessageFound = document.getElementById('no-phone-message');
     if(meals === null){
         noMessageFound.classList.remove('d-none');
+        loadToggler(false);
         return 0;
     }
     else{
@@ -52,12 +53,14 @@ const displayMeals = (meals, dataLimit) =>{
         `;
         displayMealDiv.appendChild(mealDiv);
     }
+    loadToggler(false);
 }
 
 const processSearch = (dataLimit) =>{
     const searchField = document.getElementById('search-field');
     const searchFiedValue = searchField.value;
     loadMeal(searchFiedValue, dataLimit);
+    loadToggler(true);
 }
 
 document.getElementById('btn-search').addEventListener('click', function(){
@@ -73,5 +76,15 @@ document.getElementById('btn-showAll').addEventListener('click', function(){
     processSearch()
 })
 
+const loadToggler = (isLoading) => {
+    const loadTogglerElement = document.getElementById('loadToggler');
+    if(isLoading === true){
+        loadTogglerElement.classList.remove('d-none');
+    }
+    else{
+        loadTogglerElement.classList.add('d-none');
+
+    }
+}
 
 // loadMeal('fish');
