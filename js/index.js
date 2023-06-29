@@ -46,6 +46,9 @@ const displayMeals = (meals, dataLimit) =>{
                         <div class="card-body">
                             <h5 class="card-title fw-semibold">${meal.strMeal}</h5>
                             <p class="card-text">There are many variations of passages of available, but the majority have suffered</p>
+                            <button onclick="showMealDetails('${meal.idMeal}')" type="button" class="text-warning text-decoration-underline bg-white border-0" data-bs-toggle="modal" data-bs-target="#viewMealDetails">
+                                View Details
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -87,4 +90,30 @@ const loadToggler = (isLoading) => {
     }
 }
 
-// loadMeal('fish');
+const showMealDetails = async(id) => {
+    // const mealDetailsModal = document.getElementById('mealDetailsModal');
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayMealDetail(data.meals[0]);
+
+}
+
+const displayMealDetail = (meal) => {
+    console.log(meal);
+    const viewMealTilte = document.getElementById('viewMealTilte');
+    viewMealTilte.innerText = meal.strMeal;
+    const mealDetailsModal = document.getElementById('mealDetailsModal');
+    mealDetailsModal.innerHTML = `
+    <div class="card mb-3">
+        <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><strong>Category: </strong>${meal.strCategory}</h5>
+            <p class="card-text"> <strong>Instructions: </strong>AThere are many variations of passages of Lorem Ipsum available, but the majority have suffered
+             alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+            <p class="card-text"><strong>Youtube: </strong>https://www.youtube.com/watch?v=WnpbKoYhTEY</p>
+        </div>
+    </div>`;
+}
+
+loadMeal('fish', 6);
