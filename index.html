@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal DB</title>
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        .font-section {
+            background-image: url('images/banner_1.png');
+        }
+    </style>
 </head>
-<body>
 
+<body>
+    <!-- header -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-white mt-0">
+            <div class="container-fluid px-2 py-2">
+                <a class="navbar-brand me-auto fw-bold" href="#">Tasty HUT</a>
+                <button class="btn btn-warning fw-semibold">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+    <!-- main -->
+    <main>
+        <section class="font-section text-white d-flex justify-content-center align-items-center px-2"
+            style="height:500px">
+            <div class="text-center" style="min-width: 50%;">
+                <h1>Taste Our Delicious <br> Best Foods</h1>
+                <p>There are any variations of passages of Lorem Ipsum available, but the majority have suffered <br>
+                    alteration in some form, by injected humou.</p>
+                <div class="form-contro d-flex">
+                    <input id="search-field" type="text" placeholder="Search" class="form-control me-2">
+                    <button id="btn-search" class="btn btn-warning fw-semibold">Search</button>
+                </div>
+            </div>
+        </section>
+        <section class="container my-5">
+            <h2 class="text-center fw-bold">Your Favourite Food</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4 mt-4" id="display-meal-div">
+                
+            </div>
+        </section>
+        <section class="container">
+            <div class="d-none" id="no-phone-message">
+                <h2 class="text-danger text-center">No meal found. Please add a new search.</h2>
+            </div>
+            <div class="text-center d-none" id="show-all-div">
+                <button class="btn btn-warning fw-semibold" id="btn-showAll">Show All</button>
+            </div>
+        </section>
+    </main>
 
     <script src="js/index.js"></script>
     <!-- bootstrap JS -->
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
